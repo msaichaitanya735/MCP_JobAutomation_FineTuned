@@ -1,0 +1,265 @@
+{
+  "run_id": "01_applied_fde",
+  "timestamp": "2026-05-18T14:32:11.482Z",
+  "jd_excerpt": "Forward Deployed AI Engineer\n\nWe are looking for a Forward Deployed AI Engineer to work directly with our largest customers, scoping ambiguous problems and shipping production agentic systems on top of Claude. You will own the full lifecycle: discovery sessions with customer engineering teams, architecture, build (Python + FastAPI), deploy, and iterate on production telemetry. Required: 3-5 years of software experience, deep Python, demonstrated ability to build LLM-driven systems (LangGraph, LangChain, or equivalent), tool calling, RAG, and structured outputs. Bonus: prior MCP or agent-to-agent integration work.",
+  "company": "Anthropic",
+  "role_title": "Forward Deployed AI Engineer",
+  "outcome": "applied",
+  "skip_reason": null,
+  "path_taken": [
+    "hard_screen",
+    "ai_eligibility_and_fit",
+    "select_stories",
+    "compose_resume_content",
+    "resume_editor",
+    "pdf_converter",
+    "ats_score",
+    "logger"
+  ],
+  "jd_analysis": {
+    "role_family": "Forward-deployed engineer",
+    "seniority": "mid",
+    "yoe_required": 3,
+    "required_skills": [
+      "python",
+      "fastapi",
+      "langgraph",
+      "rag",
+      "tool-calling",
+      "agentic",
+      "structured-outputs",
+      "claude-api"
+    ],
+    "nice_to_have": ["mcp", "agent-to-agent", "customer-facing"],
+    "domain": "ai-platform",
+    "company": "Anthropic",
+    "role_title": "Forward Deployed AI Engineer"
+  },
+  "eligibility_verdict": {
+    "hard_block": false,
+    "soft_block": false,
+    "fit_ok": true,
+    "worth_it": true,
+    "reason": "Strong fit; FDE role family with required skills directly matching candidate's HapTag agentic work.",
+    "explanation": "Role family is Forward-Deployed Engineer, which is in the candidate's preferred set. Required Python + LangGraph + RAG + tool-calling + structured outputs all map cleanly to the HapTag stories (multi-agent threat triage, MCP connectors, RAG with semantic caching). YoE bound 3-5 is squarely within the candidate's range. No hard or soft blockers detected."
+  },
+  "hitl_triggered": false,
+  "hitl_decision": null,
+  "selected_stories": [
+    {
+      "story_id": "haptag_multiagent_threat",
+      "company": "HapTag AI",
+      "relevance": 0.612,
+      "resume_bullet": "Built production multi-agent LangGraph pipeline for threat triage; processed 1K+ events/day at 94% validity with tool calling and safe-execution guardrails."
+    },
+    {
+      "story_id": "haptag_rag_semantic_cache",
+      "company": "HapTag AI",
+      "relevance": 0.583,
+      "resume_bullet": "Designed RAG pipeline on pgvector with HNSW indexing and semantic caching; cut LLM cost ~60% and held similarity search under 200ms."
+    },
+    {
+      "story_id": "haptag_mcp_connectors",
+      "company": "HapTag AI",
+      "relevance": 0.547,
+      "resume_bullet": "Designed MCP connectors with versioned tool contracts and agent-to-agent orchestration; exposed internal tools to AI agents safely with auth and audit logging."
+    },
+    {
+      "story_id": "haptag_fde_ambiguous_scoping",
+      "company": "HapTag AI",
+      "relevance": 0.491,
+      "resume_bullet": "Translated ambiguous customer asks into shipped agentic systems; owned discovery, scoping, build, and deployment end-to-end."
+    },
+    {
+      "story_id": "capitalone_agentic_summarization",
+      "company": "Capital One",
+      "relevance": 0.328,
+      "resume_bullet": "Built agentic summarization workflows (LangChain/CrewAI) for enterprise use; designed to fit cloud and compliance constraints."
+    },
+    {
+      "story_id": "capitalone_rag_docsearch",
+      "company": "Capital One",
+      "relevance": 0.291,
+      "resume_bullet": "Built LLM-powered RAG search over enterprise documentation; cut onboarding lookup from ~15 min to under 30 sec."
+    },
+    {
+      "story_id": "capitalone_regulated_ai",
+      "company": "Capital One",
+      "relevance": 0.184,
+      "resume_bullet": "Built AI-augmented tooling for credit-risk analysts in a regulated Azure environment; designed for compliance, auditing, and governance from the start."
+    },
+    {
+      "story_id": "capitalone_stakeholder_register",
+      "company": "Capital One",
+      "relevance": 0.163,
+      "resume_bullet": "Led technical architecture discussions with product owners and architects; produced reference implementations that drove broader AI adoption."
+    },
+    {
+      "story_id": "cognizant_scale_uptime",
+      "company": "Cognizant",
+      "relevance": 0.152,
+      "resume_bullet": "Built enterprise SaaS (React + Spring Boot) for the Pearson platform; served 200K+ users at 99.7% uptime."
+    },
+    {
+      "story_id": "cognizant_event_driven",
+      "company": "Cognizant",
+      "relevance": 0.118,
+      "resume_bullet": "Designed event-driven architecture of 12 microservices on Kafka handling 50K+ events/hour."
+    },
+    {
+      "story_id": "cognizant_serverless_pipeline",
+      "company": "Cognizant",
+      "relevance": 0.097,
+      "resume_bullet": "Built serverless AWS pipeline (Lambda, SQS, Glue) absorbing 12x traffic spikes with zero data loss."
+    },
+    {
+      "story_id": "codingstudio_fullstack",
+      "company": "coding.Studio()",
+      "relevance": 0.234,
+      "resume_bullet": "Owned full-stack features end-to-end (Python, React, Node, PostgreSQL) in an early-stage environment."
+    },
+    {
+      "story_id": "project_jobflow",
+      "company": "JobFlow (personal project)",
+      "relevance": 0.476,
+      "resume_bullet": "Built JobFlow, a ~13K-line Python pipeline automating JD analysis, resume generation, ATS scoring, and multi-ATS application submission."
+    },
+    {
+      "story_id": "project_gtm_agent",
+      "company": "GTM Intelligence Agent (personal project)",
+      "relevance": 0.281,
+      "resume_bullet": "Built a GTM intelligence agent (TypeScript, Node, Express, OpenRouter) with an MLOps roadmap."
+    }
+  ],
+  "rendered_pdf_path": "01_applied_fde_resume.pdf",
+  "rendered_docx_path": "01_applied_fde_resume.docx",
+  "ats_score": {
+    "overall_score": 0.831,
+    "keyword_coverage": 0.875,
+    "cosine_similarity": 0.792,
+    "section_completeness": 1.0,
+    "matched_keywords": [
+      "python",
+      "fastapi",
+      "langgraph",
+      "rag",
+      "tool-calling",
+      "agentic",
+      "claude-api"
+    ],
+    "missing_keywords": ["structured-outputs"],
+    "threshold": 0.75,
+    "passed": true,
+    "gap_summary": "All 7 high-priority required keywords are surfaced. 'structured-outputs' was not surfaced verbatim; consider adding to the FastAPI bullet on retry. Cosine similarity strong; section completeness fully covered."
+  },
+  "total_latency_ms": 13284.5,
+  "total_tokens_in": 3517,
+  "total_tokens_out": 1623,
+  "total_cost_usd": 0.0349,
+  "node_metrics": [
+    {
+      "node_name": "hard_screen",
+      "started_at": "2026-05-18T14:32:11.482Z",
+      "ended_at": "2026-05-18T14:32:11.484Z",
+      "latency_ms": 1.8,
+      "tokens_in": 0,
+      "tokens_out": 0,
+      "cost_usd": 0,
+      "model": null,
+      "success": true,
+      "error": null,
+      "extra": {}
+    },
+    {
+      "node_name": "ai_eligibility_and_fit",
+      "started_at": "2026-05-18T14:32:11.485Z",
+      "ended_at": "2026-05-18T14:32:14.621Z",
+      "latency_ms": 3136.0,
+      "tokens_in": 1117,
+      "tokens_out": 488,
+      "cost_usd": 0.0107,
+      "model": "claude-sonnet-4-5",
+      "success": true,
+      "error": null,
+      "extra": {}
+    },
+    {
+      "node_name": "select_stories",
+      "started_at": "2026-05-18T14:32:14.622Z",
+      "ended_at": "2026-05-18T14:32:14.671Z",
+      "latency_ms": 49.0,
+      "tokens_in": 0,
+      "tokens_out": 0,
+      "cost_usd": 0,
+      "model": null,
+      "success": true,
+      "error": null,
+      "extra": { "strategy": "deterministic_overlap_v1" }
+    },
+    {
+      "node_name": "compose_resume_content",
+      "started_at": "2026-05-18T14:32:14.672Z",
+      "ended_at": "2026-05-18T14:32:22.193Z",
+      "latency_ms": 7521.0,
+      "tokens_in": 2400,
+      "tokens_out": 1135,
+      "cost_usd": 0.0242,
+      "model": "claude-sonnet-4-5",
+      "success": true,
+      "error": null,
+      "extra": { "attempt": 1 }
+    },
+    {
+      "node_name": "resume_editor",
+      "started_at": "2026-05-18T14:32:22.194Z",
+      "ended_at": "2026-05-18T14:32:22.421Z",
+      "latency_ms": 227.0,
+      "tokens_in": 0,
+      "tokens_out": 0,
+      "cost_usd": 0,
+      "model": null,
+      "success": true,
+      "error": null,
+      "extra": {}
+    },
+    {
+      "node_name": "pdf_converter",
+      "started_at": "2026-05-18T14:32:22.422Z",
+      "ended_at": "2026-05-18T14:32:24.198Z",
+      "latency_ms": 1776.0,
+      "tokens_in": 0,
+      "tokens_out": 0,
+      "cost_usd": 0,
+      "model": null,
+      "success": true,
+      "error": null,
+      "extra": {}
+    },
+    {
+      "node_name": "ats_score",
+      "started_at": "2026-05-18T14:32:24.199Z",
+      "ended_at": "2026-05-18T14:32:24.275Z",
+      "latency_ms": 76.0,
+      "tokens_in": 0,
+      "tokens_out": 0,
+      "cost_usd": 0,
+      "model": null,
+      "success": true,
+      "error": null,
+      "extra": {}
+    },
+    {
+      "node_name": "logger",
+      "started_at": "2026-05-18T14:32:24.276Z",
+      "ended_at": "2026-05-18T14:32:24.281Z",
+      "latency_ms": 5.0,
+      "tokens_in": 0,
+      "tokens_out": 0,
+      "cost_usd": 0,
+      "model": null,
+      "success": true,
+      "error": null,
+      "extra": {}
+    }
+  ]
+}

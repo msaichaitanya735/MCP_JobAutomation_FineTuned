@@ -1,0 +1,17 @@
+# Pipeline runtime (mirrors src/job_pipeline pyproject deps).
+langgraph>=0.2.50
+anthropic>=0.40.0
+pydantic>=2.7
+pyyaml>=6.0
+python-docx>=1.1
+docxtpl>=0.16
+scikit-learn>=1.4
+numpy>=1.26
+
+# HTTP layer / Lambda adapter.
+fastapi>=0.115.0
+mangum>=0.19.0
+
+# AWS SDK (boto3 ships with the Lambda Python runtime, but pinning here
+# keeps the container image self-contained and reproducible).
+boto3>=1.34

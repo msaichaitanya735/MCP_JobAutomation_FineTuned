@@ -1,0 +1,28 @@
+# AWS Amplify Hosting build spec for this monorepo.
+#
+# Lives at the repo root because Amplify's monorepo support expects
+# the `applications:` array here. The `appRoot: frontend` directive
+# tells Amplify to cd into the frontend/ Next.js app for the build.
+#
+# The Lambda backend at backend/ is deployed via CDK (see infra/),
+# not by Amplify, so it is not listed here.
+
+version: 1
+applications:
+  - appRoot: frontend
+    frontend:
+      phases:
+        preBuild:
+          commands:
+            - npm ci --no-audit --prefer-offline
+        build:
+          commands:
+            - npm run build
+      artifacts:
+        baseDirectory: .next
+        files:
+          - "**/*"
+      cache:
+        paths:
+          - node_modules/**/*
+          - .next/cache/**/*
