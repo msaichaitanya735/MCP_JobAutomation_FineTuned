@@ -150,3 +150,76 @@ The fine-tuned model adapter must:
    that the adapter recognizes (e.g. a local Ollama/vLLM endpoint name).
 
 The graph, schemas, and node bodies do not change in Phase 2.
+
+
+
+# Frontend + deployment (Phase 1.5)
+
+## Locked decisions
+
+- **Hosting:** AWS Amplify Hosting Gen 2 on subdomain
+  `resume.saichaitanyamuthyala.com` (Route 53 zone is the user's existing
+  apex `saichaitanyamuthyala.com`, ACM cert auto-provisioned by Amplify).
+- **Access mode:** **Option C + B combined.** Public read-only viewer for a
+  curated set of past runs (B), plus a password-gated `/submit` page that
+  triggers a live pipeline run (C). Same shared password gates both.
+- **Cost protection:** shared password (env var, not in repo) + hard daily
+  Anthropic spend cap enforced server-side + Cloudflare Turnstile or
+  AWS WAF rate limit on `/api/runs`. Open access is explicitly rejected.
+- **Stack:** Next.js 15 (App Router) + TypeScript + Tailwind v4 + shadcn/ui
+  (components copied into repo, not vendored as a dep) + Motion +
+  React Flow for the LangGraph state-machine visual.
+- **Backend:** FastAPI app wrapped via Mangum, deployed as a Lambda
+  Container Image behind API Gateway. Lambda is the right cost-shape for
+  bursty single-user demo traffic.
+- **Storage:** S3 for generated DOCX/PDF artifacts (presigned URLs for
+  download, lifecycle rule deletes after 30 days); DynamoDB for run
+  records (write on terminal node, read for the viewer).
+- **HITL in deployed mode:** disabled. The CLI keeps full HITL behavior;
+  the deployed pipeline (env `JOB_PIPELINE_DEPLOYED=true`) auto-decides
+  `proceed` on every HITL invocation, treating "user submitted the JD via
+  /submit" as implicit consent. The auto-decision is recorded in
+  `node_metrics.extra.auto_decision_reason` so the trace stays auditable.
+  A real HITL UI is deferred to a future iteration.
+- **Visual direction:** clean technical / minimalist. White background with
+  one accent color, mono headings, real metrics tables and code blocks
+  as first-class UI elements. No animated gradient soup.
+- **Repo layout:** monorepo. `frontend/` (Next.js), `backend/` (FastAPI
+  Lambda handler), `infra/` (CDK), alongside the existing Python
+  pipeline at `src/job_pipeline/`.
+
+## Frontend pages
+
+| Path | Auth | Purpose |
+|---|---|---|
+| `/` | public | Landing: hero, animated graph, how-it-works |
+| `/login` | public | Password entry (sets HttpOnly cookie) |
+| `/runs` | public | List of curated public runs (Option B) |
+| `/runs/[id]` | public | Single run viewer with full metrics + downloads |
+| `/submit` | password | JD form + live progress (Option C) |
+| `/api/auth` | public | POST password -> set cookie |
+| `/api/runs` | password | POST JD -> proxies to backend Lambda |
+| `/api/runs/[id]` | password | GET run record from DynamoDB |
+
+Public sample runs live as JSON in `frontend/public/sample-runs/`.
+Real-user runs (when the live form is exercised) write to DynamoDB.
+
+## Deployment-mode behaviors that DIFFER from CLI
+
+- HITL node short-circuits to "skip" in deployed mode (env flag
+  `JOB_PIPELINE_DEPLOYED=true`). CLI still asks the user.
+- `logger_node` writes RunRecord to DynamoDB instead of (or in addition to)
+  the local JSONL file when running on Lambda.
+- `resume_editor` writes to `/tmp/<run_id>_resume.docx` then uploads to S3.
+- `pdf_converter` uses a Lambda Layer with LibreOffice or a sidecar pattern.
+  TBD; for v1 we may use a pure-Python DOCX-to-PDF path (e.g., docx2pdf
+  with the `pdfkit`/`weasyprint` route from rendered HTML) to avoid
+  packaging LibreOffice into the Lambda image.
+
+## Things explicitly NOT in scope for the frontend PR
+
+- Real-time SSE streaming of pipeline progress (poll the run record
+  every 1.5s; upgrade to SSE later).
+- Multi-tenant auth (Cognito). Single shared password is enough.
+- Storybook / component testing harness.
+- A11y deep-dive beyond shadcn primitives' built-ins.

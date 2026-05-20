@@ -4,17 +4,29 @@ Triggered by the eligibility router when:
 * ``fit_ok`` is False (role family does not match preferences), or
 * ``soft_block`` is True and ``worth_it`` is False.
 
-Surfaces the AI's reasoning to the user and asks proceed / skip. Uses
-stdin for v1 (CLI execution). For a future web/serverless deployment this
-node should be swapped for ``langgraph.types.interrupt``.
+Surfaces the AI's reasoning to the user and asks proceed / skip.
+
+Two execution modes:
+* CLI (default)            - prompt via stdin, block until user replies.
+* Deployed (serverless)    - ``JOB_PIPELINE_DEPLOYED=true`` short-circuits
+  the prompt. Submitting a JD through the live form is treated as
+  implicit consent to proceed; the auto-decision is recorded on the
+  metric so the trace shows what happened.
+
+The deployed-mode behavior is documented in ``.kiro/steering/architecture.md``.
 """
 
 from __future__ import annotations
 
+import os
 import sys
 
-from job_pipeline.instrumentation import track_node
+from job_pipeline.instrumentation import current_node_metrics, track_node
 from job_pipeline.schemas import GraphState
+
+
+def _is_deployed() -> bool:
+    return os.environ.get("JOB_PIPELINE_DEPLOYED", "").lower() in {"1", "true", "yes"}
 
 
 def _ask_proceed_or_skip(question: str, context_lines: list[str]) -> str:
@@ -70,7 +82,15 @@ def human_in_the_loop_node(state: GraphState) -> dict:
         f"Reason:     {verdict.reason}",
         f"Reasoning:  {verdict.explanation}",
     ]
-    decision = _ask_proceed_or_skip(question, context_lines)
+
+    if _is_deployed():
+        # Submitting a JD through the live form is implicit consent.
+        decision = "proceed"
+        acc = current_node_metrics.get()
+        if acc is not None:
+            acc.extra["auto_decision_reason"] = "deployed_mode_implicit_proceed"
+    else:
+        decision = _ask_proceed_or_skip(question, context_lines)
 
     update: dict = {
         "hitl_triggered": True,

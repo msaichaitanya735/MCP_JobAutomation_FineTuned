@@ -1,0 +1,54 @@
+{
+  "run_id": "02_blocked_clearance",
+  "timestamp": "2026-05-15T09:14:33.012Z",
+  "jd_excerpt": "Senior AI/ML Engineer (Cleared)\n\nSeeking a Senior AI/ML engineer with active TS/SCI clearance to support classified programs at the Skunk Works. US citizenship required. Will design and deploy ML systems on air-gapped infrastructure. Minimum 7 years of professional software experience including 4 years in production ML. Polygraph eligibility required.",
+  "company": "Lockheed Martin Skunk Works",
+  "role_title": "Senior AI/ML Engineer (Cleared)",
+  "outcome": "skipped_hard_screen",
+  "skip_reason": "Hard-block phrase matched: 'us citizen'",
+  "path_taken": ["hard_screen", "logger"],
+  "jd_analysis": null,
+  "eligibility_verdict": null,
+  "hitl_triggered": false,
+  "hitl_decision": null,
+  "selected_stories": null,
+  "rendered_pdf_path": null,
+  "rendered_docx_path": null,
+  "ats_score": null,
+  "total_latency_ms": 4.2,
+  "total_tokens_in": 0,
+  "total_tokens_out": 0,
+  "total_cost_usd": 0,
+  "node_metrics": [
+    {
+      "node_name": "hard_screen",
+      "started_at": "2026-05-15T09:14:33.012Z",
+      "ended_at": "2026-05-15T09:14:33.014Z",
+      "latency_ms": 2.1,
+      "tokens_in": 0,
+      "tokens_out": 0,
+      "cost_usd": 0,
+      "model": null,
+      "success": true,
+      "error": null,
+      "extra": {
+        "matched_phrases": ["us citizen", "active clearance required", "ts/sci"],
+        "yoe_extracted": 7,
+        "yoe_blocked": true
+      }
+    },
+    {
+      "node_name": "logger",
+      "started_at": "2026-05-15T09:14:33.015Z",
+      "ended_at": "2026-05-15T09:14:33.016Z",
+      "latency_ms": 2.1,
+      "tokens_in": 0,
+      "tokens_out": 0,
+      "cost_usd": 0,
+      "model": null,
+      "success": true,
+      "error": null,
+      "extra": {}
+    }
+  ]
+}

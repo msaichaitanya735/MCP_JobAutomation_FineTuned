@@ -1,0 +1,97 @@
+{
+  "run_id": "03_hitl_no_sponsor",
+  "timestamp": "2026-05-12T11:48:21.704Z",
+  "jd_excerpt": "Senior ML Engineer\n\nSmall pre-seed ML tooling startup is hiring its first Senior ML Engineer. Build the core training and serving stack from scratch in PyTorch. Standard equity-heavy package, modest cash. Note: we cannot sponsor visas at this stage. 4-6 years professional ML experience required.",
+  "company": "Marshmallow ML",
+  "role_title": "Senior ML Engineer",
+  "outcome": "skipped_user",
+  "skip_reason": "User declined at HITL.",
+  "path_taken": [
+    "hard_screen",
+    "ai_eligibility_and_fit",
+    "human_in_the_loop",
+    "logger"
+  ],
+  "jd_analysis": {
+    "role_family": "ML engineer (applied)",
+    "seniority": "senior",
+    "yoe_required": 4,
+    "required_skills": ["pytorch", "ml-training", "model-serving", "python"],
+    "nice_to_have": ["mlops", "infrastructure"],
+    "domain": "ml-tooling",
+    "company": "Marshmallow ML",
+    "role_title": "Senior ML Engineer"
+  },
+  "eligibility_verdict": {
+    "hard_block": false,
+    "soft_block": true,
+    "fit_ok": true,
+    "worth_it": false,
+    "reason": "Soft block (no visa sponsorship); compensation profile and company stage do not justify accepting that constraint.",
+    "explanation": "Role family is applied ML engineer which is within the preferred set. The JD explicitly states the company cannot sponsor visas. The candidate's worth_it_context allows borderline applies when the company is well-known, the role is technically novel, or compensation is strong; this pre-seed startup is not yet known and the comp note is 'modest cash, equity-heavy'. The candidate has been routed to HITL to confirm the skip."
+  },
+  "hitl_triggered": true,
+  "hitl_decision": "skip",
+  "selected_stories": null,
+  "rendered_pdf_path": null,
+  "rendered_docx_path": null,
+  "ats_score": null,
+  "total_latency_ms": 3214.7,
+  "total_tokens_in": 1083,
+  "total_tokens_out": 421,
+  "total_cost_usd": 0.0095,
+  "node_metrics": [
+    {
+      "node_name": "hard_screen",
+      "started_at": "2026-05-12T11:48:21.704Z",
+      "ended_at": "2026-05-12T11:48:21.706Z",
+      "latency_ms": 1.5,
+      "tokens_in": 0,
+      "tokens_out": 0,
+      "cost_usd": 0,
+      "model": null,
+      "success": true,
+      "error": null,
+      "extra": { "yoe_extracted": 4, "yoe_blocked": false }
+    },
+    {
+      "node_name": "ai_eligibility_and_fit",
+      "started_at": "2026-05-12T11:48:21.707Z",
+      "ended_at": "2026-05-12T11:48:24.892Z",
+      "latency_ms": 3185.0,
+      "tokens_in": 1083,
+      "tokens_out": 421,
+      "cost_usd": 0.0095,
+      "model": "claude-sonnet-4-5",
+      "success": true,
+      "error": null,
+      "extra": {}
+    },
+    {
+      "node_name": "human_in_the_loop",
+      "started_at": "2026-05-12T11:48:24.893Z",
+      "ended_at": "2026-05-12T11:48:48.111Z",
+      "latency_ms": 23218.0,
+      "tokens_in": 0,
+      "tokens_out": 0,
+      "cost_usd": 0,
+      "model": null,
+      "success": true,
+      "error": null,
+      "extra": { "decision": "skip", "wait_seconds": 23 }
+    },
+    {
+      "node_name": "logger",
+      "started_at": "2026-05-12T11:48:48.112Z",
+      "ended_at": "2026-05-12T11:48:48.115Z",
+      "latency_ms": 3.2,
+      "tokens_in": 0,
+      "tokens_out": 0,
+      "cost_usd": 0,
+      "model": null,
+      "success": true,
+      "error": null,
+      "extra": {}
+    }
+  ]
+}
