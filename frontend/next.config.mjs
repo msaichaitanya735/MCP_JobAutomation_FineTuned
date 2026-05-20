@@ -5,8 +5,10 @@ const nextConfig = {
   // middleware (cookie checks must run server-side).
   output: "standalone",
   experimental: {
-    typedRoutes: true,
+    // typedRoutes is now top-level in Next 15.5+ but keeping it in experimental
+    // is still accepted; promote here once we lock to >= 15.5.
   },
+  typedRoutes: true,
   async headers() {
     return [
       {
