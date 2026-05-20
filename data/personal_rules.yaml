@@ -1,0 +1,56 @@
+# Personal preferences feeding hard_screen and ai_eligibility_and_fit.
+# Edit freely; loaded at graph init.
+
+yoe:
+  # Skip if JD requires strictly more than this many years.
+  # 6+ blocks. 5+ ok. No YoE mentioned -> ok.
+  hard_block_threshold: 6
+
+# Substring-matched against jd_lower in hard_screen.
+hard_block_phrases:
+  - "us citizen"
+  - "u.s. citizen"
+  - "must be a citizen"
+  - "active security clearance"
+  - "active clearance required"
+  - "secret clearance required"
+  - "top secret clearance"
+  - "ts/sci"
+  - "itar"
+  - "polygraph"
+
+# Substring-matched against jd_lower; flagged as soft_block (not auto-skipped).
+soft_block_phrases:
+  - "no visa sponsorship"
+  - "do not sponsor"
+  - "unable to sponsor"
+  - "cannot sponsor"
+  - "no sponsorship available"
+  - "sponsorship not provided"
+
+# Used by ai_eligibility_and_fit to judge fit_ok.
+preferred_role_families:
+  - "AI engineer"
+  - "ML engineer (applied)"
+  - "Software engineer"
+  - "Backend engineer"
+  - "Full-stack engineer"
+  - "Forward-deployed engineer"
+  - "Platform engineer (AI)"
+
+# Roles flagged as fit_not_ok (route to HITL by default).
+disfavored_role_families:
+  - "ML researcher (pure)"
+  - "Network engineer"
+  - "Hardware/firmware engineer"
+  - "Mobile (iOS/Android) engineer"
+  - "Game developer"
+  - "Data analyst"
+
+# Free-form context fed into the eligibility prompt for worth_it judgment.
+worth_it_context: |
+  Borderline soft-block roles are still worth applying to when ANY of:
+  - The role is technically interesting (agentic systems, novel infrastructure).
+  - The company is well-known or in an interesting domain.
+  - The compensation appears strong.
+  When none of those apply, mark worth_it=false.

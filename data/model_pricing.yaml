@@ -1,0 +1,20 @@
+# USD per 1k tokens. Update as Anthropic pricing changes.
+# Used by instrumentation.py to compute per-node cost.
+
+default_model: claude-sonnet-4-5
+
+models:
+  claude-sonnet-4-5:
+    input_per_1k: 0.003
+    output_per_1k: 0.015
+  claude-haiku-4-5:
+    input_per_1k: 0.001
+    output_per_1k: 0.005
+  claude-opus-4:
+    input_per_1k: 0.015
+    output_per_1k: 0.075
+
+# Per-node model override (defaults to default_model when absent).
+node_model_overrides:
+  ai_eligibility_and_fit: claude-sonnet-4-5
+  compose_resume_content: claude-sonnet-4-5
