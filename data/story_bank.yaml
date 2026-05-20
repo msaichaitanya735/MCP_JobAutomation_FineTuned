@@ -1,0 +1,322 @@
+# =============================================================================
+# STORY BANK - SaiChaitanya Muthyala
+# =============================================================================
+# All metrics in this file are verified.
+# Loaded by config.py into a StoryBank Pydantic model.
+# =============================================================================
+
+stories:
+
+  # ---- HapTag AI -----------------------------------------------------------
+  - id: haptag_multiagent_threat
+    company: HapTag AI
+    title: Multi-agent threat detection pipeline
+    skills: [langgraph, multi-agent, tool-calling, claude-api, gpt-4o, python, agentic]
+    domain: cybersecurity
+    metrics:
+      - "1K+ security events processed per day"
+      - "94% output validity"
+    star:
+      situation: "HapTag's security team needed faster triage of incoming threat signals; analysts were the bottleneck."
+      task: "Design an agentic system that could reason over multi-step threat data and act autonomously where safe."
+      action: "Built a LangGraph pipeline with specialized agent nodes for enrichment, classification, and escalation; added tool calls to internal data sources, retry and fallback handling, and a confirmation step before any sensitive action."
+      result: "System processed 1K+ events/day at 94% validity, freeing analysts for genuine investigation work."
+    resume_bullet: "Built production multi-agent LangGraph pipeline for threat triage; processed 1K+ events/day at 94% validity with tool calling and safe-execution guardrails."
+    best_for: [ai-ml, agentic, forward-deployed, security]
+
+  - id: haptag_rag_semantic_cache
+    company: HapTag AI
+    title: RAG system with semantic caching
+    skills: [rag, pgvector, embeddings, semantic-search, hnsw, python, cost-optimization]
+    domain: cybersecurity
+    metrics:
+      - "~60% LLM cost reduction via semantic caching"
+      - "Sub-200ms similarity search via HNSW indexing"
+      - "Tens of thousands of vectors in pgvector"
+    star:
+      situation: "Repeated similar queries against the threat knowledge base were driving up LLM cost and latency."
+      task: "Cut cost and latency without degrading retrieval quality."
+      action: "Built a RAG pipeline on pgvector with HNSW indexing; added a semantic cache layer that matched near-duplicate queries to prior results before hitting the model."
+      result: "~60% cost reduction and sub-200ms search across tens of thousands of vectors."
+    resume_bullet: "Designed RAG pipeline on pgvector with HNSW indexing and semantic caching; cut LLM cost ~60% and held similarity search under 200ms."
+    best_for: [ai-ml, agentic, data-engineering, forward-deployed]
+
+  - id: haptag_eval_framework
+    company: HapTag AI
+    title: LLM-as-judge evaluation framework
+    skills: [llm-evaluation, regression-testing, ci-cd, golden-dataset, metrics, python]
+    domain: cybersecurity
+    metrics:
+      - "Golden dataset of ~500 labeled samples"
+      - "Evaluation gate wired into CI"
+    star:
+      situation: "Prompt and model changes were shipping with no objective measure of whether they helped or hurt."
+      task: "Make AI quality measurable and prevent regressions from reaching production."
+      action: "Built a golden dataset, defined F1 plus a reasoning-quality score, implemented an LLM-as-judge evaluator, and wired it as a CI gate that blocked merges on regression."
+      result: "Every prompt/model change became measurable; regressions were caught before release."
+    resume_bullet: "Built LLM-as-judge evaluation framework with a ~500-sample golden dataset and CI regression gate; made every prompt/model change measurable."
+    best_for: [ai-ml, mlops, agentic, evaluation]
+
+  - id: haptag_model_benchmarking
+    company: HapTag AI
+    title: Multi-model benchmarking and serving optimization
+    skills: [model-benchmarking, vllm, llm-serving, latency, cost-analysis, python]
+    domain: cybersecurity
+    metrics:
+      - "8+ LLMs benchmarked on latency, cost, quality"
+      - "3x serving throughput improvement with vLLM"
+    star:
+      situation: "Model choice for each task was being made by gut feel, not data."
+      task: "Produce an objective basis for model selection and improve serving efficiency."
+      action: "Benchmarked 8+ models across latency, cost, and quality; optimized self-hosted serving with vLLM."
+      result: "Model selection became data-driven; vLLM raised serving throughput ~3x."
+    resume_bullet: "Benchmarked 8+ LLMs across latency, cost, and quality; optimized serving with vLLM for ~3x throughput gain."
+    best_for: [ai-ml, mlops, platform, infrastructure]
+
+  - id: haptag_mcp_connectors
+    company: HapTag AI
+    title: MCP connectors and agent-to-agent integration
+    skills: [mcp, agent-to-agent, tool-contracts, api-design, integration, python]
+    domain: cybersecurity
+    metrics:
+      - "Tool contracts with schemas and versioning"
+    star:
+      situation: "AI agents needed safe, consistent access to internal tools and data sources."
+      task: "Build an integration layer exposing internal capabilities to agents and external vendor agents."
+      action: "Designed MCP-based connectors with versioned tool contracts (schemas, parameters, outputs); implemented agent-to-agent coordination for multi-step workflows with auth and audit logging."
+      result: "Agents could safely retrieve knowledge and take actions through a maintainable, audited integration layer."
+    resume_bullet: "Designed MCP connectors with versioned tool contracts and agent-to-agent orchestration; exposed internal tools to AI agents safely with auth and audit logging."
+    best_for: [ai-ml, agentic, integration, platform]
+
+  - id: haptag_prompt_injection_hardening
+    company: HapTag AI
+    title: Safe-by-design hardening against prompt injection
+    skills: [security, prompt-injection, input-validation, content-safety, least-privilege]
+    domain: cybersecurity
+    metrics:
+      - "Confirmation steps required for all sensitive tool actions"
+    star:
+      situation: "Agents with tool access are a real attack surface; injected instructions could trigger unintended actions."
+      task: "Harden the agentic system against prompt injection and tool misuse."
+      action: "Added tool-input validation, content-safety checks, least-privilege scoping per tool, and mandatory confirmation steps before sensitive actions; partnered with the security team on review."
+      result: "The integration layer met enterprise security standards and was audit-ready."
+    resume_bullet: "Hardened agentic system against prompt injection: input validation, content-safety checks, least-privilege tool scoping, and confirmation gates on sensitive actions."
+    best_for: [security, ai-ml, agentic, platform]
+
+  - id: haptag_fde_ambiguous_scoping
+    company: HapTag AI
+    title: Turning an ambiguous customer ask into a shipped system
+    skills: [forward-deployed, customer-facing, scoping, discovery, ambiguity]
+    domain: cybersecurity
+    metrics:
+      - "Discovery-to-production ownership on 3 systems"
+    star:
+      situation: "A customer asked, vaguely, to 'make threat detection faster' with no spec."
+      task: "Translate an ambiguous business problem into a concrete, shippable technical scope."
+      action: "Sat with the customer's workflow, identified the real bottleneck, scoped an agentic solution, built it in FastAPI, deployed it, and iterated on production feedback."
+      result: "Shipped a working system the customer adopted; owned the full arc from discovery to production."
+    resume_bullet: "Translated ambiguous customer asks into shipped agentic systems; owned discovery, scoping, build, and deployment end-to-end."
+    best_for: [forward-deployed, ai-ml, startup, customer-facing]
+
+  - id: haptag_fastapi_backend
+    company: HapTag AI
+    title: FastAPI backend brokering AI runtime requests
+    skills: [fastapi, python, rest-api, async, backend, structured-outputs]
+    domain: cybersecurity
+    metrics:
+      - "Structured JSON responses with logging and audit trails"
+    star:
+      situation: "The frontend and AI runtimes needed a reliable broker between them."
+      task: "Build backend services routing requests to agent runtimes and tools."
+      action: "Built FastAPI services with REST and async workers, schema-driven JSON payloads, retries, circuit breakers, and structured logging."
+      result: "Reliable request routing with audit trails and graceful failure handling."
+    resume_bullet: "Built FastAPI backend brokering requests between UI and AI runtimes; schema-driven payloads, retries, circuit breakers, structured audit logging."
+    best_for: [backend, ai-ml, platform, full-stack]
+
+  # ---- Capital One ---------------------------------------------------------
+  - id: capitalone_regulated_ai
+    company: Capital One
+    title: AI tooling in a regulated environment
+    skills: [regulated-ai, compliance, azure, governance, python, risk]
+    domain: financial-services
+    metrics:
+      - "Built in a regulated Azure environment with audit requirements"
+    star:
+      situation: "Credit-risk analysts needed AI-augmented tooling, but the environment was tightly regulated."
+      task: "Deliver useful AI tooling without violating compliance, security, or governance constraints."
+      action: "Designed solutions with least-privilege access, strong auditing, and risk-team review built in from the start, not bolted on."
+      result: "Shipped analyst tooling that satisfied both usefulness and audit-readiness."
+    resume_bullet: "Built AI-augmented tooling for credit-risk analysts in a regulated Azure environment; designed for compliance, auditing, and governance from the start."
+    best_for: [ai-ml, financial-services, enterprise, regulated]
+
+  - id: capitalone_rag_docsearch
+    company: Capital One
+    title: Enterprise documentation RAG search
+    skills: [rag, llm, semantic-search, enterprise, python]
+    domain: financial-services
+    metrics:
+      - "Onboarding doc lookup cut from ~15 min to under 30 sec"
+      - "Adoption across a platform serving 500+ institutions"
+    star:
+      situation: "Finding the right internal guidance was slow and high-friction for new staff."
+      task: "Make enterprise documentation searchable and fast to query."
+      action: "Built an LLM-powered RAG search over internal docs; tuned retrieval and prompting for domain-specific accuracy."
+      result: "Lookup time dropped from ~15 minutes to under 30 seconds; adoption spread across the platform."
+    resume_bullet: "Built LLM-powered RAG search over enterprise documentation; cut onboarding lookup from ~15 min to under 30 sec."
+    best_for: [ai-ml, enterprise, financial-services, full-stack]
+
+  - id: capitalone_stakeholder_register
+    company: Capital One
+    title: Engineer-to-stakeholder communication
+    skills: [communication, stakeholder-management, technical-leadership, mentoring]
+    domain: financial-services
+    metrics:
+      - "Led architecture discussions with product owners and architects"
+    star:
+      situation: "AI solution adoption stalled when technical detail did not land with non-technical owners."
+      task: "Bridge engineering and business stakeholders so good solutions actually got adopted."
+      action: "Led architecture discussions, produced reference implementations and clear documentation, and switched register depending on audience."
+      result: "Solutions were understood, trusted, and adopted more broadly."
+    resume_bullet: "Led technical architecture discussions with product owners and architects; produced reference implementations that drove broader AI adoption."
+    best_for: [enterprise, forward-deployed, technical-leadership, ai-ml]
+
+  - id: capitalone_agentic_summarization
+    company: Capital One
+    title: Agentic summarization workflow
+    skills: [langchain, crewai, agentic, llm-orchestration, python]
+    domain: financial-services
+    metrics:
+      - "Automated summarization workflow in production"
+    star:
+      situation: "Manual summarization of long internal documents was eating analyst time."
+      task: "Automate summarization reliably enough for an enterprise setting."
+      action: "Built agentic workflows with LangChain/CrewAI; designed the architecture to fit enterprise cloud and compliance requirements."
+      result: "Summarization became automated and consistent, with production-grade testing and CI."
+    resume_bullet: "Built agentic summarization workflows (LangChain/CrewAI) for enterprise use; designed to fit cloud and compliance constraints."
+    best_for: [ai-ml, agentic, enterprise, financial-services]
+
+  - id: capitalone_ruby_services
+    company: Capital One
+    title: Ruby service development
+    skills: [ruby, rails, sinatra, backend]
+    domain: financial-services
+    metrics:
+      - "Maintained and extended Ruby services"
+    star:
+      situation: "Part of the Capital One stack ran on Ruby."
+      task: "Build and maintain backend services in Ruby."
+      action: "Worked across Rails and Sinatra to develop and extend production services."
+      result: "Delivered and maintained Ruby backend functionality in a regulated environment."
+    resume_bullet: "Developed and maintained backend services in Ruby (Rails, Sinatra) within a regulated environment."
+    best_for: [backend, ruby-roles]
+
+  - id: capitalone_data_platform
+    company: Capital One
+    title: Spark and Kafka data processing
+    skills: [spark, kafka, databricks, data-engineering, streaming]
+    domain: financial-services
+    metrics:
+      - "Streaming and batch data processing in production"
+    star:
+      situation: "Risk tooling depended on large-scale data processing."
+      task: "Build reliable batch and streaming data pipelines."
+      action: "Worked with Apache Spark, Kafka, and Databricks Lakehouse to process data feeding downstream tooling."
+      result: "Delivered data pipelines supporting analyst-facing systems."
+    resume_bullet: "Built batch and streaming data pipelines with Spark, Kafka, and Databricks supporting risk tooling."
+    best_for: [data-engineering, backend, platform]
+
+  # ---- Cognizant -----------------------------------------------------------
+  - id: cognizant_scale_uptime
+    company: Cognizant
+    title: Enterprise SaaS at scale (Pearson)
+    skills: [react, java, spring-boot, microservices, scalability]
+    domain: education
+    metrics:
+      - "200K+ users served"
+      - "99.7% uptime"
+    star:
+      situation: "The Pearson education platform had to serve a large user base reliably."
+      task: "Build and maintain a customer-facing system at scale."
+      action: "Built React frontends and Spring Boot APIs; designed for reliability and worked directly with the client's technical team."
+      result: "Platform served 200K+ users at 99.7% uptime."
+    resume_bullet: "Built enterprise SaaS (React + Spring Boot) for the Pearson platform; served 200K+ users at 99.7% uptime."
+    best_for: [full-stack, java-backend, frontend, enterprise]
+
+  - id: cognizant_event_driven
+    company: Cognizant
+    title: Event-driven microservice architecture
+    skills: [kafka, microservices, event-driven, java, architecture]
+    domain: education
+    metrics:
+      - "12 microservices"
+      - "50K+ events/hour"
+    star:
+      situation: "A monolithic flow could not handle the platform's event volume."
+      task: "Design an architecture that scaled with traffic."
+      action: "Designed an event-driven system of 12 microservices coordinated through Kafka."
+      result: "Architecture handled 50K+ events/hour reliably."
+    resume_bullet: "Designed event-driven architecture of 12 microservices on Kafka handling 50K+ events/hour."
+    best_for: [backend, java-backend, architecture, platform]
+
+  - id: cognizant_serverless_pipeline
+    company: Cognizant
+    title: Serverless data pipeline absorbing traffic spikes
+    skills: [aws, lambda, sqs, glue, serverless, data-pipeline]
+    domain: education
+    metrics:
+      - "Handled 12x traffic spikes with zero data loss"
+    star:
+      situation: "Traffic spikes risked data loss in the ingestion path."
+      task: "Build a pipeline that absorbed bursts without dropping data."
+      action: "Designed a serverless pipeline with AWS Lambda, SQS, and Glue, with buffering and retries."
+      result: "Pipeline absorbed 12x spikes with zero data loss."
+    resume_bullet: "Built serverless AWS pipeline (Lambda, SQS, Glue) absorbing 12x traffic spikes with zero data loss."
+    best_for: [backend, data-engineering, cloud, platform]
+
+  # ---- coding.Studio -------------------------------------------------------
+  - id: codingstudio_fullstack
+    company: coding.Studio()
+    title: Full-stack delivery in an early-stage environment
+    skills: [python, react, typescript, node, postgresql, full-stack]
+    domain: software-services
+    metrics:
+      - "Owned full-stack features end-to-end"
+    star:
+      situation: "An early-stage team needed engineers who could own features fully."
+      task: "Build and ship full-stack functionality with little process."
+      action: "Built backend services and React frontends, owning each feature from design through deployment."
+      result: "Shipped full-stack features with high ownership and rapid iteration."
+    resume_bullet: "Owned full-stack features end-to-end (Python, React, Node, PostgreSQL) in an early-stage environment."
+    best_for: [full-stack, startup, frontend, backend]
+
+  # ---- Projects ------------------------------------------------------------
+  - id: project_jobflow
+    company: JobFlow (personal project)
+    title: Agentic job-application automation pipeline
+    skills: [python, langgraph, agentic, automation, ats, browser-automation, orchestration]
+    domain: automation
+    metrics:
+      - "~13,000+ lines of Python"
+      - "Six ATS adapters: Workday, Greenhouse, Lever, Ashby, iCIMS, Generic"
+    star:
+      situation: "Job applications are repetitive: fetch, analyze, tailor, score, submit."
+      task: "Automate the pipeline while keeping output quality high."
+      action: "Built a Python pipeline for JD fetching, JD analysis, resume generation, ATS scoring, cover-letter generation, and browser-based submission across six ATS adapters."
+      result: "End-to-end automation of the application workflow with role-adaptive output."
+    resume_bullet: "Built JobFlow, a ~13K-line Python pipeline automating JD analysis, resume generation, ATS scoring, and multi-ATS application submission."
+    best_for: [ai-ml, agentic, automation, backend, platform]
+
+  - id: project_gtm_agent
+    company: GTM Intelligence Agent (personal project)
+    title: GTM intelligence agent in TypeScript
+    skills: [typescript, node, express, openrouter, agentic, llm]
+    domain: gtm
+    metrics:
+      - "Built on Node/Express with OpenRouter; CI/CD and Kafka roadmap"
+    star:
+      situation: "GTM research is manual and slow."
+      task: "Build an agent that gathers and synthesizes go-to-market intelligence."
+      action: "Built a TypeScript/Node/Express agent on OpenRouter, with a roadmap toward GitHub Actions CI/CD, Kafka, and MLflow tracking."
+      result: "Working GTM intelligence agent shipped to GitHub."
+    resume_bullet: "Built a GTM intelligence agent (TypeScript, Node, Express, OpenRouter) with an MLOps roadmap."
+    best_for: [ai-ml, agentic, full-stack, gtm]
