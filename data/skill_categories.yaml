@@ -1,0 +1,104 @@
+# Maps skill tags (as used in story_bank.yaml) to display categories.
+# Drives the technical_skills section of the rendered resume.
+# Skills not listed here fall through to "Other".
+
+Languages:
+  - python
+  - typescript
+  - javascript
+  - ruby
+  - java
+  - go
+
+Frameworks:
+  - langgraph
+  - langchain
+  - crewai
+  - fastapi
+  - rails
+  - sinatra
+  - spring-boot
+  - react
+  - node
+  - express
+
+AI / ML:
+  - rag
+  - embeddings
+  - semantic-search
+  - hnsw
+  - pgvector
+  - vllm
+  - llm-evaluation
+  - llm-orchestration
+  - multi-agent
+  - agentic
+  - tool-calling
+  - mcp
+  - agent-to-agent
+  - prompt-injection
+  - golden-dataset
+  - model-benchmarking
+  - llm-serving
+  - structured-outputs
+
+Cloud / Infra:
+  - aws
+  - azure
+  - lambda
+  - sqs
+  - glue
+  - serverless
+  - kafka
+  - spark
+  - databricks
+  - microservices
+  - event-driven
+  - architecture
+  - platform
+  - infrastructure
+
+Practices:
+  - regression-testing
+  - ci-cd
+  - cost-optimization
+  - latency
+  - cost-analysis
+  - security
+  - input-validation
+  - content-safety
+  - least-privilege
+  - api-design
+  - rest-api
+  - async
+  - integration
+  - tool-contracts
+  - browser-automation
+  - automation
+  - data-engineering
+  - data-pipeline
+  - streaming
+  - scalability
+  - backend
+  - frontend
+  - full-stack
+  - forward-deployed
+  - customer-facing
+  - scoping
+  - discovery
+  - ambiguity
+  - communication
+  - stakeholder-management
+  - technical-leadership
+  - mentoring
+  - regulated-ai
+  - compliance
+  - governance
+  - risk
+  - enterprise
+  - claude-api
+  - gpt-4o
+  - openrouter
+  - metrics
+  - mlops
+  - orchestration

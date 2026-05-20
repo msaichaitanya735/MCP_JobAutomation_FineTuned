@@ -1,6 +1,30 @@
+# Python
 __pycache__/
 *.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
 .venv/
 venv/
+.python-version
+
+# Env
 .env
+.env.local
+
+# Runtime artifacts
+runs/*.jsonl
+runs/outputs/
+!runs/.gitkeep
+
+# Editor / OS
+.vscode/
+.idea/
 .DS_Store
+*.swp
+
+# Templates (user-provided, may contain personal info)
+templates/*.docx
+templates/*.pdf
+!templates/README.md
